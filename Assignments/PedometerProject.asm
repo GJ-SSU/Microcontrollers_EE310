@@ -61,7 +61,7 @@ Count_Minor	    equ 03h
     _MainProgram:
     CALL	_CheckButtons	; Checks Pressed Buttons
     CALL	_PedometerChange; Updates 7 Segment
-    ;CALL	_Delay		; Delays Program
+    CALL	_Delay		; Delays Program
     GOTO	_MainProgram	; Repeat
 
 ;---------------------
