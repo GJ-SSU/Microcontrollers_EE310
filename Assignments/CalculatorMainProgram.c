@@ -15,6 +15,7 @@
  * Author: Gabriel Jarvis
  * Versions:
  *      V1.0: Original
+ *      V1.1: Correction of Zero Answer Glitch
  * Useful links:  
  *      Datasheet: https://ww1.microchip.com/downloads/en/DeviceDoc/PIC18(L)F26-27-45-46-47-55-56-57K42-Data-Sheet-40001919G.pdf 
  *      PIC18F Instruction Sets: https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781119448457.app4 
@@ -672,6 +673,7 @@ void NumSplit(){
     //OutputDigitB = (CombOutput>>8) & 0x0F;
     //OutputDigitA = (CombOutput>>16) & 0x0F;
     
+    if (CombOutput != 0){
     _SplittingWorld:
     CombOutput = CombOutput - 1;
     OutputDigitD = OutputDigitD + 1;
@@ -690,7 +692,13 @@ void NumSplit(){
     if (CombOutput != 0){
         goto _SplittingWorld;
     }
-    
+    }
+    else{
+        OutputDigitA = 0;
+        OutputDigitB = 0;
+        OutputDigitC = 0;
+        OutputDigitD = 0;
+    }
     /*
     while((CombOutput % 0xF000) != 0){
         CombOutput = CombOutput - 0x1000;
