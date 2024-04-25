@@ -36,10 +36,10 @@ void INTERRUPT_Initialize (void);
 //---------------------
 void SCS(void){
 // Takes our Secret Code and Splits It Into Two Neat Parts
-    Secret_Code_Digit_A = Secret_Code & 0x0F;
-    Secret_Code_Digit_B = Secret_Code & 0xF0;
+    Secret_Code_Digit_b = Secret_Code & 0x0F;
+    Secret_Code_Digit_A = Secret_Code & 0xF0;
     // Correct Secret Code Digit B
-    Secret_Code_Digit_B = Secret_Code_Digit_B >> 4;
+    Secret_Code_Digit_A = Secret_Code_Digit_A >> 4;
     return;
 }
 unsigned char SSC(unsigned char InputInQuestion){
